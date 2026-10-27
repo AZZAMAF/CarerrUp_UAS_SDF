@@ -18,7 +18,7 @@ CareerUp adalah platform simulasi pekerjaan untuk pencari kerja dan fresh gradua
 |---|---|
 | D1. Topic & Problem Statement | [docs/D1.md](docs/D1.md) |
 | D2. Module Breakdown | [docs/D2.md](docs/D2.md) |
-| D3. Use Case Diagram | [diagrams/usecase.puml](diagrams/usecase.puml) |
+| D3. Use Case Diagram | [diagrams/usecase.puml](docs/D3.md) |
 | D4. Sequence Diagram | [docs/D4.md](docs/D4.md) |
 | D6. Test Case (skenario simulasi S2) | [docs/D6.md](docs/D6.md) |
 | D7. Fungsi `evaluate_simulation` + unit test | [docs/D7.md](docs/D7.md) |
