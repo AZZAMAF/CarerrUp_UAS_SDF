@@ -9,8 +9,8 @@ CareerUp adalah platform simulasi pekerjaan untuk pencari kerja dan fresh gradua
 | Nama | NIM | GitHub |
 |---|---|---|
 | Abdullah Azzam Firdaus | 26110300018 | @AZZAMAF |
-| Azkiya Raihana | [ISI NIM] | @rockiny4n |
-| Sahfria Elisabeth Yaleget | [ISI NIM] | @yalegetsahfria092-debug |
+| Azkiya Raihana | 26110300008  | @rockiny4n |
+| Sahfria Elisabeth Yaleget | 26110300019 | @yalegetsahfria092-debug |
 
 ## Deliverable
 
