@@ -1,0 +1,58 @@
+@startuml
+title S3 - Mengklaim Sertifikat
+
+actor "Job Seeker" as U
+participant "UI" as UI
+participant "Feedback & Progress" as FP
+database "Database" as DB
+
+U -> UI: Klik "Klaim Sertifikat"
+UI -> FP: claim_certificate(user_id, job_id)
+FP -> DB: get_certificate(user_id, job_id)
+
+alt Gagal membaca data
+  DB --> FP: error
+  FP --> UI: error baca
+  UI --> U: "Terjadi kesalahan, coba lagi"
+else Sertifikat sudah ada
+  DB --> FP: certificate_number, pdf_url
+  FP --> UI: sertifikat lama
+  UI --> U: "Sertifikat sudah pernah diterbitkan" + link PDF
+else Sertifikat belum ada
+  DB --> FP: kosong
+  FP -> DB: get_progress_and_avg_score(user_id, job_id)
+  DB --> FP: progress, avg_score
+  FP -> FP: is_eligible_for_certificate(progress, avg_score)
+  note right of DB
+    progress atau avg_score kosong/None
+    dianggap belum memenuhi syarat
+    (fungsi mengembalikan False)
+  end note
+
+  alt Syarat belum terpenuhi
+    FP -> FP: build_rejection_reason(progress, avg_score)
+    FP --> UI: ditolak + alasan spesifik
+    UI --> U: "Belum memenuhi syarat - progres 80% (butuh 100%), nilai rata-rata 65 (butuh 70)"
+  else Syarat terpenuhi
+    FP -> FP: generate_certificate_number(user_id, job_id)
+    FP -> DB: save_certificate(certificate_number, user_id, job_id)
+    alt Berhasil disimpan
+      DB --> FP: OK
+      FP -> FP: render_certificate_pdf(certificate_number)
+      FP -> FP: build_certificate_link(certificate_number)
+      FP --> UI: certificate_number + pdf_url
+      UI --> U: "Selamat! Sertifikat diterbitkan" + link PDF
+    else Sudah ada (klaim bersamaan)
+      DB --> FP: error duplikat
+      FP -> DB: get_certificate(user_id, job_id)
+      DB --> FP: certificate_number, pdf_url
+      FP --> UI: sertifikat lama
+      UI --> U: "Sertifikat sudah pernah diterbitkan" + link PDF
+    else Gagal menyimpan
+      DB --> FP: error
+      FP --> UI: error simpan
+      UI --> U: "Sertifikat belum tersimpan, coba lagi"
+    end
+  end
+end
+@enduml
