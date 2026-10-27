@@ -1,0 +1,34 @@
+@startuml
+actor "Job Seeker" as JS
+participant "Simulation" as SIM
+participant "Content\nManagement" as CM
+participant "Feedback &\nProgress" as FP
+
+JS -> SIM: submitSimulation(simulationId, answers)
+SIM -> CM: validateTasks(answers)
+
+alt ada task belum dijawab
+    CM --> SIM: validation error
+    SIM --> JS: error: "Ada tugas yang belum dijawab"
+else semua terjawab
+    SIM -> CM: getCorrectAnswers(simulationId)
+    CM --> SIM: correct answers
+    SIM -> SIM: calculateScore(answers, correct)
+    SIM -> SIM: evaluate_simulation(score, total)
+
+    alt simulasi sudah pernah dikirim
+        SIM --> JS: error: "Simulasi sudah pernah dikirim"
+    else pertama kali dikirim
+        SIM -> FP: saveResult(userId, simulationId, score, status)
+        alt gagal menyimpan
+            FP --> SIM: error
+            SIM --> JS: error: "Gagal menyimpan hasil"
+        else berhasil
+            FP --> SIM: success
+            SIM -> CM: getFeedback(status)
+            CM --> SIM: feedback message
+            SIM --> JS: tampilkan skor, status, feedback
+        end
+    end
+end
+@enduml
