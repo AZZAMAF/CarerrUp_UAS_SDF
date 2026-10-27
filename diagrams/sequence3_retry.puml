@@ -1,0 +1,42 @@
+@startuml sequence3_retry
+actor "Job Seeker" as JS
+participant "Feedback &\nProgress" as FP
+participant "Simulation" as SIM
+participant "Content\nManagement" as CM
+
+JS -> FP: viewResults()
+FP -> FP: checkLatestStatus()
+
+alt status == "Perlu Latihan Lagi"
+    FP --> JS: tampilkan tombol "Ulangi Simulasi"
+    JS -> SIM: retrySimulation(simulationId)
+    SIM -> FP: resetAttempt(simulationId)
+    FP --> SIM: success
+    SIM -> CM: getSimulationTasks(simulationId)
+    CM --> SIM: tasks
+    SIM --> JS: tampilkan tugas simulasi
+    JS -> SIM: submitAnswers(answers)
+    SIM -> CM: validateTasks(answers)
+    alt ada task belum dijawab
+        CM --> SIM: validation error
+        SIM --> JS: error: "Ada tugas yang belum dijawab"
+    else semua terjawab
+        SIM -> CM: getCorrectAnswers(simulationId)
+        CM --> SIM: correct answers
+        SIM -> SIM: calculateScore(answers, correct)
+        SIM -> SIM: evaluate_simulation(score, total)
+        SIM -> FP: saveResult(userId, simulationId, score, status)
+        alt gagal menyimpan
+            FP --> SIM: error
+            SIM --> JS: error: "Gagal menyimpan hasil"
+        else berhasil
+            FP --> SIM: success
+            SIM -> CM: getFeedback(status)
+            CM --> SIM: feedback message
+            SIM --> JS: tampilkan skor, status, feedback
+        end
+    end
+else status == "Siap" or "Hampir Siap"
+    FP --> JS: tampilkan feedback saja (tanpa tombol ulang)
+end
+@enduml
