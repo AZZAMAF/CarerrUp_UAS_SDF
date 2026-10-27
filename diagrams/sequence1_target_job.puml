@@ -1,0 +1,24 @@
+@startuml sequence1_target_job
+actor "Job Seeker" as JS
+participant "Auth &\nProfile" as Auth
+participant "Job Explorer" as Job
+participant "Content\nManagement" as CM
+
+JS -> Auth: login()
+Auth --> JS: session
+JS -> Job: selectTargetJob(jobId)
+Job -> Auth: getCurrentUser()
+Auth --> Job: userId
+Job -> CM: getJobDetails(jobId)
+CM --> Job: job, skills, active
+
+alt job not found or inactive
+    Job --> JS: error: "Pekerjaan tidak tersedia"
+else job active
+    Job -> Auth: saveTargetJob(userId, jobId)
+    Auth --> Job: success
+    Job -> CM: getRoadmap(jobId)
+    CM --> Job: roadmap (skills + simulasi)
+    Job --> JS: tampilkan roadmap
+end
+@enduml

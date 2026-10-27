@@ -21,7 +21,7 @@
 | D4. Sequence Diagram 1: Job Seeker menetapkan pekerjaan target dan roadmap | Azkiya | Sahfria |
 | D4. Sequence Diagram 2: Sistem mengevaluasi simulasi | Sahfria | Azzam |
 | D4. Sequence Diagram 3: Job Seeker mengulang simulasi (jalan B) | Azzam | Azkiya |
-| D6. Test Case (skenario simulasi S2) | Azkiya (5 common) + Sahfria (5 edge case) | Azzam |
+| D6. Test Case (skenario simulasi S2) | Sahfria  | Azzam |
 | D7. Fungsi `evaluate_simulation` + unit test | Sahfria | Azkiya |
 | README.md | Azzam | Azkiya, Sahfria |
 | ACTIVITY_LOG.md | Masing-masing mengisi entri sendiri | - |
