@@ -1,68 +1,64 @@
 # Pembagian Tugas Tim CareerUp
 
 **Kelompok 1** | UAS Software Development Fundamentals
-**Deadline:** Kamis, 29 Oktober 2026, 12:00 WIB (target selesai internal: **Rabu, 28 Oktober malam**)
+**Deadline:** Kamis, 29 Oktober 2026, 10:00 WIB (target selesai internal: **Rabu, 28 Oktober malam**)
 
 ## Anggota
 
 | Nama | GitHub | Peran utama |
 |---|---|---|
-| Abdullah Azzam Firdaus (ketua) | @AZZAMAF | Dokumen inti, kode, test, koordinasi |
-| Azkiya Raihana | @rockiny4n | D2, use case diagram, 1 sequence diagram |
-| Sahfria Elisabeth Yaleget | @yalegetsahfria092-debug | 1 sequence diagram + 5 edge case D6 |
+| Abdullah Azzam Firdaus (ketua) | @AZZAMAF | D1, sequence diagram 3, README, reviewer |
+| Azkiya Raihana | @rockiny4n | D2, D3, sequence diagram 1, D6 common |
+| Sahfria Elisabeth Yaleget | @yalegetsahfria092-debug | Sequence diagram 2, D6 edge case, D7 |
 
 ## Ringkasan Pembagian Deliverable
 
 | Deliverable | Penanggung jawab | Reviewer |
 |---|---|---|
-| D1. Topik & Masalah | Azzam (draft sudah ada, tinggal commit) | Azkiya |
-| D2. Modul | Azkiya  | Azzam |
+| D1. Topik & Masalah | Azzam | Azkiya |
+| D2. Modul | Azkiya | Azzam |
 | D3. Use Case Diagram | Azkiya | Azzam |
-| D4. Sequence Diagram 1: Peserta menyelesaikan kuis | Azkiya | Sahfria |
-| D4. Sequence Diagram 2: Mentor menilai tugas | Sahfria | Azkiya |
-| D4. Sequence Diagram 3: Peserta mengklaim sertifikat | Azzam | Sahfria |
-| D6. Test Case (skenario klaim sertifikat) | Azzam (kerangka + 5 common and 5 edge case) | Azkiya |
-| D7. Fungsi `is_eligible_for_certificate` + unit test | Azzam | Sahfria |
+| D4. Sequence Diagram 1: Job Seeker menetapkan pekerjaan target dan roadmap | Azkiya | Sahfria |
+| D4. Sequence Diagram 2: Sistem mengevaluasi simulasi | Sahfria | Azzam |
+| D4. Sequence Diagram 3: Job Seeker mengulang simulasi (jalan B) | Azzam | Azkiya |
+| D6. Test Case (skenario simulasi S2) | Azkiya (5 common) + Sahfria (5 edge case) | Azzam |
+| D7. Fungsi `evaluate_simulation` + unit test | Sahfria | Azkiya |
 | README.md | Azzam | Azkiya, Sahfria |
 | ACTIVITY_LOG.md | Masing-masing mengisi entri sendiri | - |
 
-**Catatan penting:** spec D4 mewajibkan **setiap anggota memegang 1 sequence diagram**, jadi 3 diagram dibagi ke 3 orang, bukan semuanya ke satu orang.
+**Catatan penting:** nama aktor harus sama di semua dokumen.
 
 ## Detail Tugas per Orang
 
 ### Azzam
-1. Rename repo menjadi `CareerUp_UAS_SDF`, siapkan README kerangka dan folder (`docs/`, `diagrams/`, `src/`, `tests/`).
-2. Commit D1 (`docs/D1.md`) dan siapkan draft D2 sebagai bahan Azkiya.
-3. Gambar sequence diagram 3 (klaim sertifikat, ada alur `alt`: syarat belum terpenuhi).
-4. Tulis kerangka D6 dan 5 test case common.
-5. Kode D7 + minimal 8 unit test + screenshot test lulus.
-6. Review PR Azkiya dan Sahfria, ajarin cara resolve conflict.
-7. Rapikan README (link semua deliverable, cara run test, bagian penggunaan AI, NIM anggota).
+1. Tulis D1 (`docs/D1.md`) dan buat commit.
+2. Gambar sequence diagram 3 (mengulang simulasi, jalan B, ada alur `alt`: ulang lagi vs selesai).
+3. Tulis dan rapikan README (link deliverable, cara run test, penggunaan AI, anggota tim).
+4. Review PR Azkiya dan Sahfria.
+5. Isi activity log sendiri setiap selesai kerja.
 
-### Azkiya (fokus belajar Git)
-1. Clone repo, atur `git config` (nama dan email GitHub), buat branch `d2-azkiya`.
-2. Baca draft D2, rapikan dengan kata-kata sendiri, lalu commit dan buka PR. Pastikan paham kenapa modul dibagi seperti itu.
-3. Buat branch `d3-azkiya`, tulis use case diagram dari kode PlantUML yang disediakan Azzam, lalu sesuaikan.
-4. Export gambar (`.png`) dan simpan source (`.puml`), lalu buka Pull Request D3.
-5. Gambar sequence diagram 1 (peserta menyelesaikan kuis, `alt`: nilai kurang lalu ulang).
-6. Review PR D1 dengan komentar singkat.
-7. Isi activity log sendiri setiap selesai kerja.
+### Azkiya
+1. Tulis D2 (`docs/D2.md`) dari konsep modul CareerUp yang baru, lalu buat branch dan PR.
+2. Tulis use case diagram (PlantUML + export `.png`), commit sebagai D3.
+3. Gambar sequence diagram 1 (menetapkan pekerjaan target dan roadmap, `alt`: roadmap berhasil vs perlu revisi).
+4. Tulis 5 test case common untuk skenario simulasi S2 di D6.
+5. Review PR Sahfria dan Azzam dengan komentar singkat.
+6. Isi activity log sendiri setiap selesai kerja.
 
-### Sahfria (fokus belajar Git)
-1. Clone repo, atur `git config` (nama dan email GitHub), buat branch `d4-sahfria`.
-2. Gambar sequence diagram 2 (mentor menilai tugas, `alt`: tugas belum dikumpulkan).
-3. Tulis alasan kenapa skenarionya penting (1-2 kalimat).
-4. Tulis 5 edge case di D6 (lihat daftar ide di bawah), plus 3-5 kalimat penjelasan cara memilihnya.
-5. Review PR D3 dan D7 dengan komentar singkat.
-6. Isi activity log sendiri.
+### Sahfria
+1. Gambar sequence diagram 2 (evaluasi simulasi, ada alur `alt`: hasil lolos vs gagal).
+2. Tulis 5 edge case di D6 berdasarkan kategori dari spec.
+3. Kode D7 (`evaluate_simulation`) + unit test di `tests/test_certificate.py` (atau file baru kalau namanya berubah), lalu buat PR.
+4. Review PR Azkiya dan Azzam dengan komentar singkat.
+5. Isi activity log sendiri setiap selesai kerja.
 
 ## Rencana Commit (min. 3 commit bermakna per orang)
 
 | Orang | Commit 1 | Commit 2 | Commit 3 | Commit 4 |
 |---|---|---|---|---|
-| Azzam | Setup repo + README kerangka | Tambah D1 | Tambah sequence diagram 3 | Tambah kode D7 dan unit test |
-| Azkiya | Tambah D2 (setelah dirapikan) | Tambah source use case diagram (`.puml`) | Tambah gambar D3 setelah review | Tambah sequence diagram 1 |
-| Sahfria | Tambah sequence diagram 2 | Tambah 5 edge case di D6 | Revisi diagram setelah review | - |
+| Azzam | Tambah D1 | Tambah sequence diagram 3 | Tambah README | Review PR |
+| Azkiya | Tambah D2 | Tambah use case diagram (`.puml` + `.png`) | Tambah sequence diagram 1 | Tambah 5 test case common D6 |
+| Sahfria | Tambah sequence diagram 2 | Tambah 5 edge case D6 | Tambah kode D7 + unit test | Review PR |
 
 Commit untuk activity log boleh ditambah, tapi **bukan pengganti** commit di atas.
 
@@ -70,10 +66,10 @@ Commit untuk activity log boleh ditambah, tapi **bukan pengganti** commit di ata
 
 | PR | Isi | Dibuat oleh | Reviewer |
 |---|---|---|---|
-| PR #1 | D3 Use Case Diagram | Azkiya | Azzam + Sahfria |
-| PR #2 | Sequence Diagram 2 | Sahfria | Azzam + Azkiya |
-| PR #3 (opsional) | D2 Modul | Azkiya | Azzam |
-| PR #4 (opsional) | D7 kode dan unit test | Azzam | Sahfria |
+| PR #1 | D2 + D3 Use Case Diagram | Azkiya | Azzam + Sahfria |
+| PR #2 | Sequence Diagram 2 + D6 edge case + D7 | Sahfria | Azzam + Azkiya |
+| PR #3 (opsional) | Sequence Diagram 1 + D6 common | Azkiya | Sahfria + Azzam |
+| PR #4 (opsional) | D1 + README | Azzam | Azkiya + Sahfria |
 
 Aturan: **tidak ada yang merge PR miliknya sendiri sebelum direview** minimal 1 orang.
 
@@ -81,36 +77,21 @@ Aturan: **tidak ada yang merge PR miliknya sendiri sebelum direview** minimal 1 
 
 | Tanggal | Target |
 |---|---|
-| Jumat 23 Okt | Rename repo, commit D1, semua clone repo, atur `git config`, buat branch |
-| Sabtu 24 Okt | Azkiya: D2 dan mulai D3. Sahfria: sequence diagram 2 |
-| Minggu 25 Okt | PR D3 dan PR sequence diagram 2 dibuka dan direview; Azzam: sequence diagram 3 dan kerangka D6 |
-| Senin 26 Okt | Azkiya: sequence diagram 1. Azzam: D7 kode dan test. Sahfria: 5 edge case D6 |
-| Selasa 27 Okt | Perbaikan hasil review; D6 lengkap (10 test case); README lengkap; screenshot test |
-| Rabu 28 Okt | Cek akhir semua checklist, pastikan activity log cocok dengan commit |
-| Kamis 29 Okt | Cadangan waktu. Submit link repo **sebelum 12:00 WIB** |
-
-## Ide Edge Case untuk D6 (skenario klaim sertifikat)
-
-Fungsi: `is_eligible_for_certificate(progress, avg_score)`, lulus jika progres 100% dan nilai rata-rata minimal 70.
-
-- Nilai tepat 70 (batas bawah)
-- Nilai 69,9 (sedikit di bawah batas)
-- Progres 99% (hampir lengkap)
-- Nilai negatif
-- Nilai di atas 100
-- Progres di atas 100%
-- Input kosong atau `None`
+| Selasa 27 Okt | D1, D2, D3 di-commit, PR #1 dibuka, ketiga sequence diagram digambar |
+| Rabu 28 Okt | D6, D7, README, dan activity log selesai |
+| Kamis 29 Okt | Cek akhir dan **submit sebelum 10:00** |
 
 ## Aturan Tim
 
 1. **Jangan commit langsung ke `main`.** Selalu pakai branch lalu Pull Request.
 2. Nama branch: `d<nomor>-<nama>`, contoh `d3-azkiya`.
-3. Pesan commit jelas, contoh: `Add use case diagram for CareerUp`. Jangan `update` atau `fix` saja.
+3. Pesan commit jelas, contoh: `Add sequence diagram 3 for retry simulation`. Jangan `update` atau `fix` saja.
 4. Atur `git config user.name` dan `user.email` dengan email yang terhubung ke akun GitHub masing-masing, supaya commit tampil atas nama sendiri.
 5. Activity log (`ACTIVITY_LOG.md`) diisi **sendiri** dari akun GitHub masing-masing, **setiap selesai kerja**, dengan hash commit atau nomor PR sebagai bukti. Jangan menulis atas nama teman.
 6. Tanggal di activity log harus sesuai tanggal kerja sebenarnya.
 7. Semua anggota harus bisa menjelaskan **bagian mana pun** dari proyek jika ditanya dosen.
 8. Jika memakai AI, catat di README alat apa dan untuk apa.
+9. Jika memakai PlantUML, simpan source `.puml` dan export `.png`/`.svg` ke folder `diagrams/`.
 
 ## Checklist Akhir
 
@@ -118,9 +99,10 @@ Fungsi: `is_eligible_for_certificate(progress, avg_score)`, lulus jika progres 1
 - [ ] Diagram punya gambar (`.png`/`.svg`) **dan** file source
 - [ ] Tiap anggota punya minimal 3 commit bermakna
 - [ ] Minimal 2 PR yang direview anggota lain
-- [ ] Setiap anggota memegang 1 sequence diagram
+- [ ] Tiap anggota memegang 1 sequence diagram
+- [ ] Nama aktor konsisten di semua dokumen
 - [ ] Activity log lengkap dan cocok dengan riwayat commit
 - [ ] README: nama app, anggota (nama + NIM + username GitHub), link deliverable, cara run test, bagian penggunaan AI
 - [ ] Screenshot test lulus
 - [ ] Repo publik (atau dosen sudah ditambahkan sebagai collaborator)
-- [ ] Link repo disubmit sebelum Kamis 29 Okt, 12:00 WIB
+- [ ] Link repo disubmit sebelum Kamis 29 Okt, 10:00 WIB
