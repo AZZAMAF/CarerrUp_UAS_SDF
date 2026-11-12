@@ -1,3 +1,6 @@
 __pycache__/
 .pytest_cache/
 plantuml.jar
+.env
+venv/
+.DS_Store
